@@ -1,0 +1,33 @@
+{
+  "name": "resume-template",
+  "version": "1.0.0",
+  "description": "backend for resume builder",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --exec server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "client": "^0.0.1",
+    "concurrently": "^5.0.1",
+    "cors": "^2.8.5",
+    "create-react-app": "^4.0.3",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "html-pdf": "^2.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akshay1027/Resume-template.git"
+  },
+  "author": "akshay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akshay1027/Resume-template/issues"
+  },
+  "homepage": "https://github.com/akshay1027/Resume-template#readme"
+}
