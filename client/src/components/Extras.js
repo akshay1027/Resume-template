@@ -32,11 +32,20 @@ class Experience extends Component {
   };
 
   createAndDownloadPDF = () => {
+
+    const server1 = process.env.NODE_ENV === "production"
+    ? "https://resume-template-pec.herokuapp.com/create-pdf"
+    : "http://localhost:8081/create-pdf";
+     
+    const server2 = process.env.NODE_ENV === "production"
+    ? "https://resume-template-pec.herokuapp.com/fetch-pdf"
+    : "http://localhost:8081/fetch-pdf";
+
     axios
-      .post ('/create-pdf', this.props.values)
+      .post (server1, this.props.values)
       .then (() => {
         axios
-          .get ('fetch-pdf', {responseType: 'blob'})
+          .get (server2, {responseType: 'blob'})
           .then (res => {
             const pdfBlob = new Blob ([res.data], {type: 'application/pdf'});
             saveAs (pdfBlob, `${this.props.values.firstname}'s Resume.pdf`);

@@ -33,11 +33,20 @@ class Projects extends Component {
   };
 
   createAndDownloadPDF = () => {
+
+    const server1 = process.env.NODE_ENV === "production"
+    ? "https://resume-template-pec.herokuapp.com/create-pdf"
+    : "http://localhost:8081/create-pdf";
+     
+    const server2 = process.env.NODE_ENV === "production"
+    ? "https://resume-template-pec.herokuapp.com/fetch-pdf"
+    : "http://localhost:8081/fetch-pdf";
+
     axios
-      .post ('/create-pdf', this.state)
+      .post (server1, this.state)
       .then (() => {
         axios
-          .get ('fetch-pdf', {responseType: 'blob'})
+          .get (server2, {responseType: 'blob'})
           .then (res => {
             const pdfBlob = new Blob ([res.data], {type: 'application/pdf'});
             saveAs (pdfBlob, 'Resume.pdf');
